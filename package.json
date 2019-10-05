@@ -1,0 +1,89 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Player Finder",
+  "keywords": [
+    "loopback-application",
+    "loopback"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "build:apidocs": "lb-apidocs",
+    "build": "lb-tsc --copy-resources",
+    "build:watch": "lb-tsc --watch",
+    "clean": "lb-clean dist* *.tsbuildinfo",
+    "docker:start": "../../bin/start-dbs.sh",
+    "docker:stop": "../../bin/stop-dbs.sh",
+    "migrate": "node ./dist/migrate",
+    "pretest": "npm run clean && npm run build && npm run docker:start",
+    "pretest:ci": "npm run build",
+    "test": "lb-mocha --allow-console-logs \"dist/__tests__/**/*.js\"",
+    "test:ci": "lb-mocha --allow-console-logs \"dist/__tests__/**/*.js\"",
+    "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js && npm run posttest",
+    "prestart": "npm run build",
+    "start": "concurrently --kill-others \"npm run start:app\"",
+    "start_me": "npm run build && node .",
+    "start:app": "node .",
+    "prepublishOnly": "npm run test"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "license": "MIT",
+  "files": [
+    "README.md",
+    "index.js",
+    "index.d.ts",
+    "dist*/src",
+    "dist*/index*",
+    "src"
+  ],
+  "dependencies": {
+    "@loopback/authentication": "3.0.1",
+    "@loopback/boot": "^1.5.8",
+    "@loopback/context": "^1.23.2",
+    "@loopback/core": "^1.10.4",
+    "@loopback/openapi-v3": "^1.9.9",
+    "@loopback/repository": "^1.15.1",
+    "@loopback/rest": "^1.20.1",
+    "@loopback/rest-explorer": "^1.4.1",
+    "@loopback/service-proxy": "^1.3.8",
+    "@types/jsonwebtoken": "8.3.4",
+    "bcryptjs": "2.4.3",
+    "debug": "4.1.1",
+    "express": "4.17.1",
+    "isemail": "3.2.0",
+    "jsonwebtoken": "8.5.1",
+    "lodash": "4.17.15",
+    "loopback-connector-mongodb": "5.0.1",
+    "loopback-connector-rest": "^3.5.0"
+  },
+  "devDependencies": {
+    "@loopback/build": "^2.0.13",
+    "@loopback/eslint-config": "^4.1.1",
+    "@loopback/http-caching-proxy": "^1.1.15",
+    "@loopback/repository": "^1.8.0",
+    "@loopback/testlab": "^1.9.1",
+    "@types/lodash": "^4.14.141",
+    "@types/node": "^10.14.20",
+    "@typescript-eslint/eslint-plugin": "^2.3.2",
+    "@typescript-eslint/parser": "^2.3.2",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-eslint-plugin": "^2.1.0",
+    "eslint-plugin-mocha": "^6.1.1",
+    "@types/bcryptjs": "2.4.2",
+    "@types/debug": "4.1.5",
+    "@types/express": "4.17.1",
+    "@types/mocha": "5.2.7",
+    "concurrently": "4.1.2",
+    "mocha": "6.2.0",
+    "source-map-support": "0.5.13",
+    "typescript": "~3.6.3",
+    "lodash": "^4.17.15"
+  },
+  "copyright.owner": "IBM Corp."
+}
