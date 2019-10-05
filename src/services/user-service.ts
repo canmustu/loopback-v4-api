@@ -43,20 +43,24 @@ export class MyUserService implements IMyUserService<User, Credentials> {
   }
 
   async verifyAuthorization(user: UserProfile, requiredRoles: string[], roleControlType: string): Promise<boolean> {
-    // check user roles exist or not
-    if (!user.roles || !user.roles.length) {
-      return false;
-    }
 
+    console.log(user)
+    console.log(requiredRoles)
+    
     // check there is no any required role
     if (!requiredRoles || !requiredRoles.length) {
       return true;
     }
 
-    // getting user roles
-    const userRoles: string[] = user.roles || [];
+    // check user roles exist or not
+    if (!user.roles || !user.roles.length) {
+      return false;
+    }
 
     let isAuthorized = false;
+
+    // getting user roles
+    const userRoles: string[] = user.roles || [];
 
     if (roleControlType === RoleControlType.ANY) {
       isAuthorized = userRoles.some(userRole => requiredRoles.findIndex(requiredRole => requiredRole === userRole) !== -1);

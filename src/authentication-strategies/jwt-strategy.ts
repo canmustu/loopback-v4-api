@@ -30,7 +30,7 @@ export class JWTAuthenticationStrategy implements AuthenticationStrategy {
 
   async authenticate(request: Request): Promise<UserProfile | undefined> {
     console.log(this.options);
-    await this.processOptions();
+    await this.processAuthenticateOptions();
     console.log(this.options);
     const token: string = this.extractCredentials(request);
     const userProfile: UserProfile = await this.tokenService.verifyToken(token);
@@ -42,7 +42,7 @@ export class JWTAuthenticationStrategy implements AuthenticationStrategy {
     }
   }
 
-  async processOptions() {
+  async processAuthenticateOptions() {
     /**
         Obtain the options object specified in the @authenticate decorator
         of a controller method associated with the current request.

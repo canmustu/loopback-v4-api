@@ -46,7 +46,7 @@ export class PingController {
     return currentUserProfile;
   }
 
-  @authenticate('jwt', { roles: ['SUPER_ADMIN'], roleControlType: RoleControlType.ALL })
+  @authenticate('jwt', { roles: ['ADMIN', 'NORMAL_USER'], roleControlType: RoleControlType.ALL })
   @get('/ping2')
   ping2(@inject(SecurityBindings.USER) currentUserProfile: UserProfile): object {
     return currentUserProfile;
