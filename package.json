@@ -57,7 +57,7 @@
     "express": "4.17.1",
     "isemail": "3.2.0",
     "jsonwebtoken": "8.5.1",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "loopback-connector-mongodb": "5.0.1",
     "loopback-connector-rest": "^3.5.0"
   },
@@ -83,7 +83,7 @@
     "mocha": "6.2.0",
     "source-map-support": "0.5.13",
     "typescript": "~3.6.3",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.19"
   },
   "copyright.owner": "IBM Corp."
 }
